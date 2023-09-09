@@ -14,13 +14,20 @@
           <div class="card-front">
             <div class="card-chip"></div>
             <div class="card-logo">
-              <img src="" alt="card-logo" />
+              <img
+                src="./assets/images/visa.png"
+                alt="card-logo"
+                style="width: 100%"
+              />
             </div>
-            <div class="card-number"></div>
+            <div class="card-number" id="card-num-display"></div>
+            <div class="card-number" id="card-num-display-1"></div>
+            <div class="card-number" id="card-num-display-2"></div>
+            <div class="card-number" id="card-num-display-3"></div>
 
             <div class="card-holder">
               <label>Card holder</label>
-              <div></div>
+              <div id="card_holder_display"></div>
             </div>
             <div class="card-expire-date">
               <label>EXPIRES</label>
@@ -33,7 +40,11 @@
           <div class="card-back">
             <div class="card-strip"></div>
             <div class="card-logo">
-              <img src="" alt="card-logo" />
+              <img
+                src="./assets/images/visa.png"
+                alt="card-logo"
+                style="width: 100%"
+              />
             </div>
 
             <div class="ccv">
@@ -48,7 +59,7 @@
       <!-- card input section -->
       <main>
         <form action="#">
-          <fieldset>
+          <fieldset id="card-digit">
             <label for="card-number">CARD NUMBER</label>
             <input
               type="num"

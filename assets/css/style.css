@@ -67,7 +67,8 @@ section {
   height: 100%;
   top: 0;
   left: 0;
-  background: url("http://cdn.flaticon.com/svg/44/44386.svg") no-repeat center;
+  /* border: 3px solid red; */
+  /* background: url("http://cdn.flaticon.com/svg/44/44386.svg") no-repeat center; */
   background-size: cover;
   opacity: 0.05;
 }
@@ -137,7 +138,8 @@ section {
   margin: 0 auto;
   top: 103px;
   left: 19px;
-  font-size: 38px;
+  font-size: 20px;
+  /* border: 3px solid red; */
 }
 .card-container label {
   font-size: 10px;
