@@ -34,8 +34,10 @@
             </div>
             <div class="card-expire-date">
               <label>EXPIRES</label>
-              <div id="month"></div>
-              <div id="year"></div>
+              <div class="date-expire">
+                <div id="month"></div>
+                <div id="year"></div>
+              </div>
             </div>
           </div>
           <!-- card front ends -->
@@ -53,7 +55,7 @@
 
             <div class="ccv">
               <label>CCV</label>
-              <div id="ccv-back"></div>
+              <div class="ccv-back"></div>
             </div>
           </div>
           <!-- card back ends -->
@@ -62,7 +64,8 @@
 
       <!-- card input section -->
       <main>
-        <form action="#">
+        <p id="messageValidator"></p>
+        <form onsubmit="return submissionValid()">
           <fieldset id="card-digit">
             <label for="card-number">CARD NUMBER</label>
             <span id="messageValidation"></span>
@@ -146,14 +149,18 @@
 
           <fieldset class="ccv-fieldset">
             <label for="ccv-card">CCV</label>
-            <input type="text" id="ccv-card" maxlength="3" />
+            <input
+              type="text"
+              class="ccv-card-num"
+              id="ccv-card"
+              maxlength="3"
+            />
             <span id="ccvValidation"></span>
           </fieldset>
-          <button class="btn"><i class="fa fa-lock"></i> submit</button>
+          <button type="submit" class="btn">submit</button>
         </form>
       </main>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/validation.js"></script>
   </body>

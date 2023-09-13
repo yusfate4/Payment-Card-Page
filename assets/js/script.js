@@ -1,23 +1,4 @@
-// Card number
-// $(".input-card-number").on("keyup change", function () {
-//   $t = $(this);
-
-//   if ($t.val().length > 3) {
-//     $t.next().focus();
-//   }
-
-//   var card_number = " ";
-//   $(".input-card-number").each(function () {
-//     card_number += $(this).val() + " ";
-//     if ($(this).val().length == 4) {
-//       $(this).next().focus();
-//     }
-//   });
-
-//   $(".card-container .number").html(card_number);
-// });
-
-const inputFields = document.querySelectorAll("input-card-number");
+const inputFields = document.querySelectorAll(".input-card-number");
 const card_number = document.getElementById("card-number");
 const card_number_1 = document.getElementById("card-number-1");
 const card_number_2 = document.getElementById("card-number-2");
@@ -69,10 +50,10 @@ inputFields.forEach(function (input, index, fields) {
     const get_card_num_3 = input.value;
 
     if (
-      (get_card_num,
-      get_card_num_1,
-      get_card_num_2,
-      get_card_num_3.length === 4)
+      get_card_num.length === 4 ||
+      get_card_num_1.length === 4 ||
+      get_card_num_2.length === 4 ||
+      get_card_num_3.length === 4
     ) {
       if (index < fields.length - 1) {
         fields[index + 1].focus();
@@ -99,26 +80,27 @@ document.querySelector("#card-expire-month").oninput = () => {
 
 // card expiration year
 document.querySelector("#card-expire-year").oninput = () => {
-  document.querySelector("#month").innerHTML =
+  document.querySelector("#year").innerHTML =
     document.querySelector("#card-expire-year").value;
 };
 
 // ccv
-document.querySelector(".ccv-card").oninput = () => {
+document.querySelector(".ccv-card-num").oninput = () => {
   document.querySelector(".ccv-back").innerHTML =
-    document.querySelector(".ccv-card").value;
+    document.querySelector(".ccv-card-num").value;
 };
 
-document.querySelector(".ccv-card").onmouseenter = () => {
+document.querySelector(".ccv-card-num").onmouseenter = () => {
   document.querySelector(".card-front").style.transform =
     "perspective(1000px) rotateY(-180deg)";
 
   document.querySelector(".card-back").style.transform =
     "perspective(1000px) rotateY(0deg)";
 };
-document.querySelector(".ccv-card").onmouseleave = () => {
+document.querySelector(".ccv-card-num").onmouseleave = () => {
   document.querySelector(".card-front").style.transform =
     "perspective(1000px) rotateY(0deg)";
+
   document.querySelector(".card-back").style.transform =
     "perspective(1000px) rotateY(180deg)";
 };
@@ -131,6 +113,7 @@ let currentCardLogo = "assets/images/visa.png";
 
 function changeCardLogo() {
   const card_input_value = card_input.value;
+
   if (card_input_value.length > 0) {
     const cardFirstDigit = card_input_value[0];
     if (cardFirstDigit === "2" || cardFirstDigit === "5") {
@@ -138,47 +121,16 @@ function changeCardLogo() {
     }
 
     if (cardFirstDigit === "3") {
+      // console.log(currentCardLogo);
       currentCardLogo = "assets/images/am.png";
     }
 
     if (cardFirstDigit === "4") {
       currentCardLogo = "assets/images/visa.png";
-    } else {
-      currentCardLogo = "assets/images/visa.png";
     }
-    card_logo.src = currentCardLogo;
-    console.log(currentCardLogo);
+  } else {
+    currentCardLogo = "assets/images/visa.png";
   }
+  card_logo.src = currentCardLogo;
 }
-
 card_input.addEventListener("input", changeCardLogo);
-
-// // // Card expiration date
-// $("#card-expire-month, #card-expire-year").change(function () {
-//   m = $("#card-expire-month option").index(
-//     $("#card-expire-month option:selected")
-//   );
-//   m = m < 10 ? "0" + m : m;
-//   y = $("#card-expire-year").val().substr(2, 2);
-//   $(".card-expire-date div").html(m + "/" + y);
-// });
-
-// $("#ccv-card")
-//   .on("focus", function () {
-//     $(".card-container").addClass("hover");
-//   })
-//   .on("blur", function () {
-//     $(".card-container").removeClass("hover");
-//   })
-//   .on("keyup change", function () {
-//     $(".ccv div").html($(this).val());
-//   });
-
-// setTimeout(function () {
-//   $("#ccv-card")
-//     .focus()
-//     .delay(1000)
-//     .queue(function () {
-//       $(this).blur().dequeue();
-//     });
-// }, 500);

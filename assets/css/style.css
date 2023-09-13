@@ -28,7 +28,6 @@ section {
 }
 
 .card-container {
-  /* border: 3px solid red; */
   width: 400px;
   height: 280px;
   position: absolute;
@@ -38,10 +37,10 @@ section {
   perspective: 1000;
 }
 
-.card-container:hover .card-flip,
+/* .card-container:hover .card-flip,
 .card-container.hover .card-flip {
   transform: rotateY(180deg);
-}
+} */
 
 .card-container .card-front,
 .card-container .card-back {
@@ -81,20 +80,20 @@ section {
 
 .card-container .card-logo {
   position: absolute;
-  top: 9px;
+  top: 30px;
   right: 20px;
   width: 60px;
 }
 
 .card-container .card-front {
-  /* border: 3px solid red; */
   z-index: 2;
-  transform: rotateY(0deg);
+  /* transform: rotateY(0deg); */
 }
 
-.card-container .card-back {
+/* .card-container .card-back {
   transform: rotateY(180deg);
-}
+
+} */
 
 .card-container .card-back .card-logo {
   top: 180px;
@@ -160,7 +159,7 @@ section {
   margin: 0 auto;
   top: 180px;
   left: 19px;
-  font-size: 20px;
+  font-size: 18px;
   text-transform: capitalize;
 }
 
@@ -169,6 +168,14 @@ section {
   left: auto;
   right: 20px;
 }
+
+.card-container .card-expire-date .date-expire {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
 .card-container .ccv {
   height: 36px;
   background: #fff;
@@ -176,6 +183,7 @@ section {
   border-radius: 5px;
   top: 110px;
   left: 0;
+  /* border: 3px solid red; */
   right: 0;
   position: absolute;
   margin: 0 auto;
