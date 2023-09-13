@@ -17,7 +17,7 @@
 //   $(".card-container .number").html(card_number);
 // });
 
-const inputFields = document.querySelectorAll("card-digit");
+const inputFields = document.querySelectorAll("input-card-number");
 const card_number = document.getElementById("card-number");
 const card_number_1 = document.getElementById("card-number-1");
 const card_number_2 = document.getElementById("card-number-2");
@@ -91,33 +91,94 @@ card_holder_name.addEventListener("input", function () {
   card_holder_display.textContent = card_holder;
 });
 
+// card expiration month
+document.querySelector("#card-expire-month").oninput = () => {
+  document.querySelector("#month").innerHTML =
+    document.querySelector("#card-expire-month").value;
+};
 
-// // Card expiration date
-$("#card-expire-month, #card-expire-year").change(function () {
-  m = $("#card-expire-month option").index(
-    $("#card-expire-month option:selected")
-  );
-  m = m < 10 ? "0" + m : m;
-  y = $("#card-expire-year").val().substr(2, 2);
-  $(".card-expire-date div").html(m + "/" + y);
-});
+// card expiration year
+document.querySelector("#card-expire-year").oninput = () => {
+  document.querySelector("#month").innerHTML =
+    document.querySelector("#card-expire-year").value;
+};
 
-$("#ccv-card")
-  .on("focus", function () {
-    $(".card-container").addClass("hover");
-  })
-  .on("blur", function () {
-    $(".card-container").removeClass("hover");
-  })
-  .on("keyup change", function () {
-    $(".ccv div").html($(this).val());
-  });
+// ccv
+document.querySelector(".ccv-card").oninput = () => {
+  document.querySelector(".ccv-back").innerHTML =
+    document.querySelector(".ccv-card").value;
+};
 
-setTimeout(function () {
-  $("#ccv-card")
-    .focus()
-    .delay(1000)
-    .queue(function () {
-      $(this).blur().dequeue();
-    });
-}, 500);
+document.querySelector(".ccv-card").onmouseenter = () => {
+  document.querySelector(".card-front").style.transform =
+    "perspective(1000px) rotateY(-180deg)";
+
+  document.querySelector(".card-back").style.transform =
+    "perspective(1000px) rotateY(0deg)";
+};
+document.querySelector(".ccv-card").onmouseleave = () => {
+  document.querySelector(".card-front").style.transform =
+    "perspective(1000px) rotateY(0deg)";
+  document.querySelector(".card-back").style.transform =
+    "perspective(1000px) rotateY(180deg)";
+};
+
+// change card logo
+const card_logo = document.getElementById("card-front-logo");
+const card_input = document.getElementById("card-number");
+
+let currentCardLogo = "assets/images/visa.png";
+
+function changeCardLogo() {
+  const card_input_value = card_input.value;
+  if (card_input_value.length > 0) {
+    const cardFirstDigit = card_input_value[0];
+    if (cardFirstDigit === "2" || cardFirstDigit === "5") {
+      currentCardLogo = "assets/images/mc.png";
+    }
+
+    if (cardFirstDigit === "3") {
+      currentCardLogo = "assets/images/am.png";
+    }
+
+    if (cardFirstDigit === "4") {
+      currentCardLogo = "assets/images/visa.png";
+    } else {
+      currentCardLogo = "assets/images/visa.png";
+    }
+    card_logo.src = currentCardLogo;
+    console.log(currentCardLogo);
+  }
+}
+
+card_input.addEventListener("input", changeCardLogo);
+
+// // // Card expiration date
+// $("#card-expire-month, #card-expire-year").change(function () {
+//   m = $("#card-expire-month option").index(
+//     $("#card-expire-month option:selected")
+//   );
+//   m = m < 10 ? "0" + m : m;
+//   y = $("#card-expire-year").val().substr(2, 2);
+//   $(".card-expire-date div").html(m + "/" + y);
+// });
+
+// $("#ccv-card")
+//   .on("focus", function () {
+//     $(".card-container").addClass("hover");
+//   })
+//   .on("blur", function () {
+//     $(".card-container").removeClass("hover");
+//   })
+//   .on("keyup change", function () {
+//     $(".ccv div").html($(this).val());
+//   });
+
+// setTimeout(function () {
+//   $("#ccv-card")
+//     .focus()
+//     .delay(1000)
+//     .queue(function () {
+//       $(this).blur().dequeue();
+//     });
+// }, 500);

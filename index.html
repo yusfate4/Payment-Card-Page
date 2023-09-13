@@ -17,13 +17,16 @@
               <img
                 src="./assets/images/visa.png"
                 alt="card-logo"
+                id="card-front-logo"
                 style="width: 100%"
               />
             </div>
-            <div class="card-number" id="card-num-display"></div>
-            <div class="card-number" id="card-num-display-1"></div>
-            <div class="card-number" id="card-num-display-2"></div>
-            <div class="card-number" id="card-num-display-3"></div>
+            <div class="card-number">
+              <p id="card-num-display"></p>
+              <p id="card-num-display-1"></p>
+              <p id="card-num-display-2"></p>
+              <p id="card-num-display-3"></p>
+            </div>
 
             <div class="card-holder">
               <label>Card holder</label>
@@ -31,7 +34,8 @@
             </div>
             <div class="card-expire-date">
               <label>EXPIRES</label>
-              <div></div>
+              <div id="month"></div>
+              <div id="year"></div>
             </div>
           </div>
           <!-- card front ends -->
@@ -49,7 +53,7 @@
 
             <div class="ccv">
               <label>CCV</label>
-              <div></div>
+              <div id="ccv-back"></div>
             </div>
           </div>
           <!-- card back ends -->
@@ -61,11 +65,14 @@
         <form action="#">
           <fieldset id="card-digit">
             <label for="card-number">CARD NUMBER</label>
+            <span id="messageValidation"></span>
             <input
               type="num"
               id="card-number"
               class="input-card-number"
               maxlength="4"
+              autofocus
+              oninput="numberValidator(this)"
             />
 
             <input
@@ -73,6 +80,7 @@
               id="card-number-1"
               class="input-card-number"
               maxlength="4"
+              oninput="numberValidator(this)"
             />
 
             <input
@@ -80,6 +88,7 @@
               id="card-number-2"
               class="input-card-number"
               maxlength="4"
+              oninput="numberValidator(this)"
             />
 
             <input
@@ -87,11 +96,18 @@
               id="card-number-3"
               class="input-card-number"
               maxlength="4"
+              oninput="numberValidator(this)"
             />
           </fieldset>
           <fieldset>
             <label for="card-holder">Card Holder</label>
-            <input type="text" id="card-holder" />
+            <input
+              type="text"
+              id="card-holder"
+              oninput="cardholderValidator(this)"
+              pattern="[A-Za-z]+"
+            />
+            <span id="holderValidation"></span>
           </fieldset>
 
           <fieldset class="fieldset-expire">
@@ -100,7 +116,7 @@
 
             <div class="select">
               <select name="" id="card-expire-month">
-                <option></option>
+                <option value="month" selected disabled></option>
                 <option>01</option>
                 <option>02</option>
                 <option>03</option>
@@ -117,7 +133,7 @@
             </div>
             <div class="select">
               <select name="" id="card-expire-year">
-                <option></option>
+                <option value="year" selected disabled></option>
                 <option>2025</option>
                 <option>2026</option>
                 <option>2027</option>
@@ -131,6 +147,7 @@
           <fieldset class="ccv-fieldset">
             <label for="ccv-card">CCV</label>
             <input type="text" id="ccv-card" maxlength="3" />
+            <span id="ccvValidation"></span>
           </fieldset>
           <button class="btn"><i class="fa fa-lock"></i> submit</button>
         </form>
@@ -138,5 +155,6 @@
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/validation.js"></script>
   </body>
 </html>
